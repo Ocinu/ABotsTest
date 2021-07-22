@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    {% for i in records %}
+        <div class="row">
+            <div class="col">{{ i.title }}</div>
+            <div class="col">{{ i.content }}</div>
+            <div class="col">{{ i.current_version }}</div>
+        </div>
+    {% endfor %}
+{% endblock %}
