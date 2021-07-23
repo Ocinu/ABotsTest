@@ -19,7 +19,7 @@ def add_new_record(request):
             data = form.cleaned_data
             WikiPage.objects.create(title=data['title'],
                                     content=data['content'],
-                                    current_version=14)
+                                    current_version=1)
         return redirect('home')
     else:
         form = CreateNewPage()
@@ -42,9 +42,10 @@ def view_record(request, record_id):
 def edit_record(request, record_id):
     if request.method == 'POST':
         record = WikiPage.objects.get(pk=record_id)
-        record.title = request.POST.get("title")
-        record.content = request.POST.get("content")
-        record.save()
+        next_version = record.current_version + 1
+        WikiPage.objects.create(title=request.POST.get("title"),
+                                content=request.POST.get("content"),
+                                current_version=next_version)
         content = {
             'title': f'Редагування сторінки {record_id}',
             'record': record,
