@@ -6,10 +6,18 @@
 
 {% block body %}
     {% for i in records %}
+{#        <div class="row">#}
+{#            <div class="col">{{ i.title }}</div>#}
+{#            <div class="col">{{ i.content }}</div>#}
+{#            <div class="col">{{ i.current_version }}</div>#}
+{#            <div class="col">#}
+{#                <a href="edit/{{ i.id }}" class="nav-link px-2 link-dark">Редагувати {{ i.id }}</a>#}
+{#            </div>#}
+{#        </div>#}
+
+
         <div class="row">
-            <div class="col">{{ i.title }}</div>
-            <div class="col">{{ i.content }}</div>
-            <div class="col">{{ i.current_version }}</div>
+            <a href="page/{{ i.id }}" class="nav-link px-2 link-dark">{{ i.title }}</a>
         </div>
     {% endfor %}
 {% endblock %}
